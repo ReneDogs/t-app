@@ -1,8 +1,8 @@
 TApp::Application.routes.draw do |map|
-  resources :locations
+  
 
   devise_for :users
-
+  resources :locations
   
   root :to => 'pages#home'
   match '/contact', :to => 'pages#contact'
@@ -13,6 +13,7 @@ TApp::Application.routes.draw do |map|
   match '/circle',  :to => 'pages#circle'
   match '/myroutes',:to => 'pages#myroutes'
   match '/ownposition',:to => 'pages#ownposition'
+  
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

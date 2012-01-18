@@ -1,7 +1,6 @@
 class LocationsController < ApplicationController
   def index
     @locations = Location.all
-    @data = Location.all.to_gmaps4rails
     @json = Location.all.to_gmaps4rails
   end
 

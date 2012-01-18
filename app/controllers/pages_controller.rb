@@ -25,11 +25,6 @@ class PagesController < ApplicationController
   def myroutes 
     @title = "Meine Routen"
   end
-   def ownposition
-    @title = "Meine Position"
-    
-     @locations = Location.all
-    @json = Location.all.to_gmaps4rails
-  end
+   
   
 end

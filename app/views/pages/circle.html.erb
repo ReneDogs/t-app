@@ -1,4 +1,63 @@
 
 <% if user_signed_in? %>
-    <%= link_to "Meine Position", ownposition_path, "data-role"=>"button" %>
-    <% end %>
+ <script type="text/javascript">
+
+        $(document).ready(function() {
+
+            $('#findme').click(function() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(success, error);
+                } else {
+                    error('Geolocation nicht unterstuetzt');
+                }
+            });
+        });  
+
+
+        function success(position) {
+          var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+          var myOptions = {
+            zoom: 15,
+            center: latlng,
+            mapTypeControl: false,
+            navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
+          var mapcanvas = $('#mapcanvas');
+          var map = new google.maps.Map(mapcanvas[0], myOptions);
+          var marker = new google.maps.Marker({
+              position: latlng,
+              map: map,
+              
+          });
+        }
+       
+        function error(msg) {
+          var errMsg = typeof msg == 'string' ? msg : "Geolocation failed";
+          $('#msg').html(errMsg);
+        }
+    </script> 
+
+<div data-role="fieldcontain" align="center">
+   <label for="select-choice-1" class="select">Umkreissuche</label><br>
+   <select name="select-choice-1" id="ukm">
+      <option value="1">im Umkreis von 1km</option>
+      <option value="2">im Umkreis von 2km</option>
+      <option value="3">im Umkreis von 3km</option>
+      <option value="4">im Umkreis von 4km</option>
+      <option value="5">im Umkreis von 5km</option>
+      <option value="6">im Umkreis von 6km</option>
+      <option value="7">im Umkreis von 7km</option>
+      <option value="8">im Umkreis von 8km</option>
+      <option value="9">im Umkreis von 9km</option>
+      <option value="10">im Umkreis von 10km</option>
+   </select>
+   <a href="/locations"><input type="button" name="Text 1" value="Weiter!"></a>
+<input id="findme" type="button" value="Wo bin ich ?" />
+            <div id="msg"></div>
+            <div id="mapcanvas" style="height: 400px; width: 400px;"></div>
+</div>
+
+  <% end %>
+  
+  
