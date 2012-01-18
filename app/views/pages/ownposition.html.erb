@@ -1,0 +1,5 @@
+
+<%= Geocoder.search(request.ip)  %>
+<%= request.location.city %>
+<%= request.location.country %>
+<%= gmaps4rails(@json) %>

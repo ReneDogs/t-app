@@ -1,1 +1,4 @@
-die Umkreissuche
+
+<% if user_signed_in? %>
+    <%= link_to "Meine Position", ownposition_path, "data-role"=>"button" %>
+    <% end %>

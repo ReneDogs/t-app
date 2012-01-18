@@ -1,13 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
   <head>
-    
+    <%= yield :head %>
     <title><%= @title %></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
-	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>-->
   </head>
   
   <body>
@@ -24,13 +24,14 @@
             <%= content_tag :div, msg, :id => "flash_#{name}" %>
         <% end %>
 
-            <%= yield %>
-          
+            
+          <%= yield :scripts %> 
+          <%= yield %>
       </div>
        
       <div data-role=„footer">
         <%= render 'layouts/footer' %>
       </div>
-    </div>  
+    </div>
   </body>
 </html>

@@ -1,0 +1,13 @@
+one:
+  name: MyString
+  address: MyString
+  latitude: 1.5
+  longitude: 1.5
+  comment: MyString
+
+two:
+  name: MyString
+  address: MyString
+  latitude: 1.5
+  longitude: 1.5
+  comment: MyString
